@@ -40,5 +40,6 @@ end
 
 gem "rspec-rails", ">= 2.0.1", :group => [:development, :test]
 gem "capybara", :group => [:development, :test]
-gem "cucumber-rails", :group => [:development, :test]
+gem "cucumber-rails", :group => [:test]
+gem "database_cleaner", :group => [:test]
 gem "jquery-rails"
