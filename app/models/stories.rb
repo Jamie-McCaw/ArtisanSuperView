@@ -1,10 +1,6 @@
 class Stories
-	API_KEY = '1ad5b3db20aa'
-	API_KEY2 = '3861c2d7561d'
-	API_KEY3 = 'E810b7038a88'
-
-	def initialize(iteration_number) 
-		@stories = Artisan::get_stories_by_iteration(API_KEY, iteration_number)
+	def initialize(api_key, iteration_number) 
+		@stories = Artisan::get_stories_by_iteration(api_key, iteration_number)
 	end
 
   def get_craftsman_names
