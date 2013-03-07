@@ -1,5 +1,3 @@
-@api_key = '1ad5b3db20aa'
-
 Given(/^a user visits list view page$/) do
   visit root_path
 end

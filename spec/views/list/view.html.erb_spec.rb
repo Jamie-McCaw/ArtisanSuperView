@@ -1,5 +1,11 @@
 require 'spec_helper'
 
-describe "list/view.html.erb" do
-  pending "add some examples to (or delete) #{__FILE__}"
+describe 'visiting the list view page' do
+  before do
+    visit '/list'
+  end
+
+	it "list/view.html.erb" do
+  	page.should have_selector('.table')
+	end
 end

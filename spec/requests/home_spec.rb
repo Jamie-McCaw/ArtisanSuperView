@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe 'visiting the homepage' do
   before do
-    visit '/'
+    visit root_path
   end
 
   it 'should have a body' do

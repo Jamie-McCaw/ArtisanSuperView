@@ -4,9 +4,9 @@ gem 'rails', '3.2.9'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
-
+gem 'pry'
 gem 'sqlite3'
-
+gem 'json'
 gem 'artisan', :git => 'https://github.com/8thlight/artisan_api.git'
 
 # Gems used only for assets and not required
