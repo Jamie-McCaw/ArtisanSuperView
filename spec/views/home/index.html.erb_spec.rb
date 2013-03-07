@@ -1,5 +1,11 @@
 require 'spec_helper'
 
-describe "home/index.html.erb" do
-  pending "add some examples to (or delete) #{__FILE__}"
+describe 'visiting the home page' do
+  before do
+    visit '/'
+  end
+
+	it "index.html.erb" do
+  	page.should have_link('List View')
+	end
 end
