@@ -1,10 +1,7 @@
 class ListController < ApplicationController
-	API_KEY = '1ad5b3db20aa'
-	API_KEY2 = '3861c2d7561d'
-	API_KEY3 = 'E810b7038a88'
-  
+
   def view
-  	api_keys = [API_KEY, API_KEY2, API_KEY3]
+  	api_keys = Keys.new.get_keys
   	projects = Array.new
   	api_keys.each do |api_key|
 			project_name = Project.new(api_key).get_project_name
