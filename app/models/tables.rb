@@ -16,22 +16,7 @@ class Tables
   def build_row_hash(iterations, project_name, api_key)
   	table = Array.new
 		iterations.each do |iteration|
-			row = Hash.new
-			row.store(:project_name, project_name)
-			row.store(:iteration_number, iteration[:number])
-			row.store(:members, get_names(api_key, iteration[:number]))
-			row.store(:billed_points, iteration[:total_billed_points])
-			if iteration[:committed_points_at_completion] != nil
-				row.store(:total_bug_points, iteration[:committed_points_at_completion].to_f - iteration[:total_billed_points])
-			else
-				row.store(:total_bug_points, 0)
-			end
-			if iteration[:committed_points_at_completion] != nil
-				row.store(:completed_points, iteration[:committed_points_at_completion])
-			else
-				row.store(:completed_points, 0)
-			end
-			row.store(:iteration_completed?, iteration[:complete])
+			row = build_hash_of_project_information(iteration, project_name, api_key)
 			table.push(row)
 		end
 		return table 	
@@ -41,4 +26,41 @@ class Tables
   	stories = Stories.new(api_key, iteration_number)
   	members = stories.get_craftsman_names 
   end
+
+  def build_hash_of_project_information(iteration, project_name, api_key) 
+		row = Hash.new
+		row.store(:project_name, project_name)
+		row.store(:iteration_number, iteration[:number])
+		row.store(:members, get_names(api_key, iteration[:number]))
+		row.store(:billed_points, iteration[:total_billed_points])
+		row.store(:total_bug_points, get_total_bug_points(iteration))
+		row.store(:completed_points, get_committed_points(iteration))
+		row.store(:iteration_completed?, iteration[:complete])
+		return row
+  end
+
+  def get_total_bug_points(iteration)
+  	return committed_points(iteration) == nil ? 0 : calculate_bug_points(iteration)
+  #	if !committed_points(iteration).nil?
+	#		return calculate_bug_points(iteration)
+	#	else
+	#		return 0
+	#	end
+  end
+
+  def get_committed_points(iteration)
+  	return committed_points(iteration) == nil ? 0 : committed_points(iteration)
+  end
+
+  def committed_points(iteration)
+  	iteration[:committed_points_at_completion]
+  end
+
+  def calculate_bug_points(iteration)
+  	committed_points(iteration).to_f - billed_points(iteration)	
+  end
+
+  def billed_points(iteration)
+  	iteration[:total_billed_points]	
+  end	
 end
