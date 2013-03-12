@@ -69,6 +69,7 @@ GEM
     execjs (1.4.0)
       multi_json (~> 1.0)
     ffi (1.4.0)
+    fullcalendar-rails (1.5.4.0)
     gherkin (2.11.6)
       json (>= 1.7.6)
     hike (1.2.1)
@@ -171,6 +172,7 @@ DEPENDENCIES
   coffee-rails (~> 3.2.1)
   cucumber-rails
   database_cleaner
+  fullcalendar-rails
   jquery-rails
   json
   pry

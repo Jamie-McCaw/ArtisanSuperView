@@ -32,7 +32,7 @@ class Tables
 		row.store(:project_name, project_name)
 		row.store(:iteration_number, iteration[:number])
 		row.store(:members, get_names(api_key, iteration[:number]))
-		row.store(:billed_points, iteration[:total_billed_points])
+		row.store(:billed_points, billed_points(iteration))
 		row.store(:total_bug_points, get_total_bug_points(iteration))
 		row.store(:completed_points, get_committed_points(iteration))
 		row.store(:iteration_completed?, iteration[:complete])
@@ -41,11 +41,6 @@ class Tables
 
   def get_total_bug_points(iteration)
   	return committed_points(iteration) == nil ? 0 : calculate_bug_points(iteration)
-  #	if !committed_points(iteration).nil?
-	#		return calculate_bug_points(iteration)
-	#	else
-	#		return 0
-	#	end
   end
 
   def get_committed_points(iteration)
