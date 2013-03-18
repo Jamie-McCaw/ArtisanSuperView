@@ -36,6 +36,8 @@ class Tables
 		row.store(:total_bug_points, get_total_bug_points(iteration))
 		row.store(:completed_points, get_committed_points(iteration))
 		row.store(:iteration_completed?, iteration[:complete])
+    row.store(:start_date, iteration_start_date(iteration))
+    row.store(:finish_date, iteration_finish_date(iteration))
 		return row
   end
 
@@ -57,5 +59,13 @@ class Tables
 
   def billed_points(iteration)
   	iteration[:total_billed_points]	
+  end
+
+  def iteration_start_date(iteration)
+    iteration[:start_date]
+  end
+
+  def iteration_finish_date(iteration)
+    iteration[:finish_date]
   end	
 end

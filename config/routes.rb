@@ -5,6 +5,8 @@ ArtisanSuperView::Application.routes.draw do
 
   get "home/index"
 
+  get "calendar/events" => "calendar#get_events"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
