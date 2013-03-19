@@ -1,4 +1,5 @@
 ArtisanSuperView::Application.routes.draw do
+  resources :List
   get "calendar/view"
 
   get "list/view"
@@ -6,6 +7,8 @@ ArtisanSuperView::Application.routes.draw do
   get "home/index"
 
   get "calendar/events" => "calendar#get_events"
+
+  match 'week_picker/:date' => 'list#week_picker'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
