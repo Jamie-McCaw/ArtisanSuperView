@@ -13,6 +13,16 @@ class Tables
 		iterations = projects.flatten
   end
 
+  def create_project_table_from_dates(start_date, end_date)
+    projects = Array.new
+    @api_keys.each do |api_key|
+      project_name = Project.new(api_key).get_project_name
+      project_iterations = Iterations.new(api_key).get_all_iterations_by_date_range(start_date, end_date)
+      projects.push(build_row_hash(project_iterations, project_name, api_key))
+    end
+    iterations = projects.flatten  
+  end
+
   def build_row_hash(iterations, project_name, api_key)
   	table = Array.new
 		iterations.each do |iteration|

@@ -1,24 +1,3 @@
-<p>Date: <input type="text" id="datepicker" /></p>
+<p>Please Pick a Date: <input type="text" id="datepicker" /></p>
 
-<table class="table">
-  <tr>
-    <th>Project Name</th>
-    <th>Iteration</th>
-    <th>Members</th>
-    <th>Billed</th>
-    <th>Bugs</th>
-    <th>Completed</th>
-    <th>Iteration Closed</th>
-  </tr>
-  <% @iterations.each_with_index do |iteration, i| %>
-  <tr>
-  	<td><%= iteration[:project_name] %></td>
-  	<td><%= iteration[:iteration_number] %></td>
-  	<td><%= iteration[:members].join(', ') %></td>
-  	<td><%= iteration[:billed_points] %></td>
-  	<td><%= iteration[:total_bug_points] %></td>
-  	<td><%= iteration[:completed_points] %></td>
-  	<td><%= iteration[:iteration_completed?] %></td>
-  </tr>
-  <% end %>
-</table>
+<div id="here_table"></div>

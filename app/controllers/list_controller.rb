@@ -2,13 +2,17 @@ class ListController < ApplicationController
 	WEEK = 7
 
 	def view
-		@iterations = Tables.new.create_project_table
+	end
+
+	def create_table(start_date, end_date)
+		@iterations = Tables.new.create_project_table_from_dates(start_date, end_date)
 	end
 
 	def week_picker
 		start_date = params['date']
 		end_date = get_end_date(start_date)
-		render :json => { :start_date => start_date, :end_date => end_date }
+		create_table(start_date, end_date)
+		render :json => {:iterations => @iterations}
 	end
 
 	def date_from_string(date)
