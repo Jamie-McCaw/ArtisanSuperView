@@ -1,5 +1,11 @@
 require 'spec_helper'
 
-describe "calendar/view.html.erb" do
-  pending "add some examples to (or delete) #{__FILE__}"
+describe 'visiting the calendar view page' do
+  before do
+    visit '/calendar'
+  end
+
+	it "calendar/view.html.erb" do
+  	page.should have_selector('#calendar')
+	end
 end
