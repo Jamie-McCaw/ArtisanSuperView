@@ -1,1 +1,1 @@
-This is an app that uses the Artisan[Artisan](https://artisan.8thlight.com/) API to get an overview of all the projects in Artisan in a list view and calendar view.
+This is an app that uses the [Artisan](https://artisan.8thlight.com) API to get an overview of all the projects in Artisan in a list view and calendar view.
